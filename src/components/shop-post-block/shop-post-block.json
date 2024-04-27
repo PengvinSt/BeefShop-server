@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_shop_post_block_shop_post_blocks",
+  "info": {
+    "displayName": "Shop Post Block",
+    "icon": "bold",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "post_text": {
+      "type": "blocks"
+    },
+    "post_media": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "media_link": {
+      "type": "string"
+    }
+  }
+}

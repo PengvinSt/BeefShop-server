@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "beef_shop_items",
+  "info": {
+    "singularName": "shop-items",
+    "pluralName": "beef-shop-items",
+    "displayName": "Shop Items",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Product_image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "alt": {
+      "type": "string",
+      "required": true,
+      "default": "DarGusto Даргусто Заказати ..."
+    },
+    "food_category": {
+      "type": "string",
+      "required": true
+    },
+    "food_category_additional": {
+      "type": "string"
+    },
+    "food_name": {
+      "type": "string",
+      "required": true
+    },
+    "food_price": {
+      "type": "biginteger",
+      "required": true
+    }
+  }
+}

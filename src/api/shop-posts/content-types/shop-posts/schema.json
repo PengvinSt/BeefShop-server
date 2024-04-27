@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "beff_shop_posts",
+  "info": {
+    "singularName": "shop-posts",
+    "pluralName": "beff-shop-posts",
+    "displayName": "Shop Posts",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "post_title": {
+      "type": "string"
+    },
+    "post_description": {
+      "type": "text"
+    },
+    "shop_post_block": {
+      "displayName": "Shop Post Block",
+      "type": "component",
+      "repeatable": true,
+      "component": "shop-post-block.shop-post-block"
+    }
+  }
+}
