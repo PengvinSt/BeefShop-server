@@ -362,6 +362,80 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiShopItemsShopItems extends Schema.CollectionType {
+  collectionName: 'beef_shop_items';
+  info: {
+    singularName: 'shop-items';
+    pluralName: 'beef-shop-items';
+    displayName: 'Shop Items';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Product_image: Attribute.Media & Attribute.Required;
+    alt: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'DarGusto \u0414\u0430\u0440\u0433\u0443\u0441\u0442\u043E \u0417\u0430\u043A\u0430\u0437\u0430\u0442\u0438 ...'>;
+    food_category: Attribute.String & Attribute.Required;
+    food_category_additional: Attribute.String;
+    food_name: Attribute.String & Attribute.Required;
+    food_price: Attribute.BigInteger & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::shop-items.shop-items',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::shop-items.shop-items',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiShopPostsShopPosts extends Schema.CollectionType {
+  collectionName: 'beff_shop_posts';
+  info: {
+    singularName: 'shop-posts';
+    pluralName: 'beff-shop-posts';
+    displayName: 'Shop Posts';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    post_title: Attribute.String;
+    post_description: Attribute.Text;
+    shop_post_block: Attribute.Component<
+      'shop-post-block.shop-post-block',
+      true
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::shop-posts.shop-posts',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::shop-posts.shop-posts',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -788,80 +862,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiShopItemsShopItems extends Schema.CollectionType {
-  collectionName: 'beef_shop_items';
-  info: {
-    singularName: 'shop-items';
-    pluralName: 'beef-shop-items';
-    displayName: 'Shop Items';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Product_image: Attribute.Media & Attribute.Required;
-    alt: Attribute.String &
-      Attribute.Required &
-      Attribute.DefaultTo<'DarGusto \u0414\u0430\u0440\u0433\u0443\u0441\u0442\u043E \u0417\u0430\u043A\u0430\u0437\u0430\u0442\u0438 ...'>;
-    food_category: Attribute.String & Attribute.Required;
-    food_category_additional: Attribute.String;
-    food_name: Attribute.String & Attribute.Required;
-    food_price: Attribute.BigInteger & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::shop-items.shop-items',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::shop-items.shop-items',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiShopPostsShopPosts extends Schema.CollectionType {
-  collectionName: 'beff_shop_posts';
-  info: {
-    singularName: 'shop-posts';
-    pluralName: 'beff-shop-posts';
-    displayName: 'Shop Posts';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    post_title: Attribute.String;
-    post_description: Attribute.Text;
-    shop_post_block: Attribute.Component<
-      'shop-post-block.shop-post-block',
-      true
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::shop-posts.shop-posts',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::shop-posts.shop-posts',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -872,6 +872,8 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::shop-items.shop-items': ApiShopItemsShopItems;
+      'api::shop-posts.shop-posts': ApiShopPostsShopPosts;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -880,8 +882,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::shop-items.shop-items': ApiShopItemsShopItems;
-      'api::shop-posts.shop-posts': ApiShopPostsShopPosts;
     }
   }
 }
